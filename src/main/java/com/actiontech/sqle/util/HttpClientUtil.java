@@ -120,7 +120,7 @@ public class HttpClientUtil {
         DetermineHaveToken();
         String dataSourcePath = String.format(HttpClientUtil.dataSourcePath, projectID);
         String encodedDbType = URLEncoder.encode(dbType, "UTF-8");
-        String reqPath = String.format("%s?filter_db_type=%s&filter_db_type=%s", dataSourcePath, encodedDbType, "create_workflow");
+        String reqPath = String.format("%s?filter_db_type=%s&functional_module=%s", dataSourcePath, encodedDbType, "create_workflow");
         JsonObject resp = sendGet(uriHead + reqPath);
 
         if (resp.get("code").getAsInt() != 0) {
