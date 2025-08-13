@@ -37,7 +37,7 @@ public class HttpClientUtil {
 
     private static final String projectPath = "/v1/dms/projects";
 
-    private static final String dataSourcePath = "/v1/dms/projects/%s/db_services";
+    private static final String dataSourcePath = "/v1/dms/projects/%s/db_services/tips";
 
     private static final String schemaPath = "/sqle/v1/projects/%s/instances/%s/schemas";
 
@@ -128,7 +128,7 @@ public class HttpClientUtil {
         DetermineHaveToken();
         String dataSourcePath = String.format(HttpClientUtil.dataSourcePath, projectID);
         String encodedDbType = URLEncoder.encode(dbType, "UTF-8");
-        String reqPath = String.format("%s?filter_by_db_type=%s&page_index=%s&page_size=%s", dataSourcePath, encodedDbType, "1", "999999");
+        String reqPath = String.format("%s?filter_db_type=%s&functional_module=%s", dataSourcePath, encodedDbType, "create_workflow");
         JsonObject resp = sendGet(uriHead + reqPath);
 
         if (resp.get("code").getAsInt() != 0) {
